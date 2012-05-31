@@ -1,6 +1,6 @@
 {
   "name": "skates",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "streamline creating WebSocket apps",
   "homepage": "http://github.com/dominictarr/skates",
   "repository": {
