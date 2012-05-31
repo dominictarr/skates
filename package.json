@@ -7,7 +7,11 @@
     "type": "git",
     "url": "git://github.com/dominictarr/skates.git"
   },
-  "dependencies": {},
+  "dependencies": {
+    "sockjs": "0.3",
+    "connect": "2.3",
+    "reconnector": "0"
+  },
   "devDependencies": {},
   "author": "Dominic Tarr <dominic.tarr@gmail.com> (dominictarr.com)",
   "optionalDependencies": {},
