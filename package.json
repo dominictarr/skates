@@ -17,6 +17,6 @@
   "optionalDependencies": {},
   "engines": {
     "node": "*"
-  }
+  },
   "browserify": "./client.js"
 }
