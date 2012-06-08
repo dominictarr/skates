@@ -26,7 +26,7 @@ function defaults (obj, defaults) {
   or, jsonp longpolling or whatever.
 
   this will require a lot more brains in the clients,
-  but that is what I'm all about. 
+  but that is what I'm all about.
 */
 
 function createServer(opts) {
@@ -53,17 +53,16 @@ function createServer(opts) {
   //this adds some global information from the server. 
   //it will be the same for all clients that have loaded data 
   //from this server
+  var clientSettings = defaults(opts.client, {
+      url: opts.url,
+      timestamp: app.timestamp = Date.now(), //this is the version of the code you are on
+    })
 
   browser.prepend([
-    'window.SKATES = ' + JSON.stringify({
-      timestamp: app.timestamp = Date.now(), //this is the version of the code you are on
-      url: opts.url
-    }) 
-    //it will be useful to pass initialization data on the connection, too.
-   , 
-  'window.SKATES.create = ' + function () {
-    return new SockJS(SKATES.prefix || SKATES.url)
-  }.toString() + ';'
+    'window.SKATES = ' + JSON.stringify(clientSettings), 
+    'window.SKATES.create = ' + function () {
+      return new SockJS(SKATES.prefix || SKATES.url)
+    }.toString() + ';'
   ].join('\n'))
   browser.prepend(fs.readFileSync(__dirname + '/src/sockjs-0.3.min.js'))
 /*
